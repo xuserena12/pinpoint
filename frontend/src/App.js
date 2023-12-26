@@ -1,3 +1,4 @@
+import logo from './logo.svg';
 import './App.css';
 import Home from './pages/Home';
 import Banner from './components/Banner';
@@ -5,8 +6,8 @@ import Banner from './components/Banner';
 function App() {
   return (
     <div className="App">
-      <Banner/>
-      <Home/>
+      <Banner />
+      <Home />
     </div>
   );
 }

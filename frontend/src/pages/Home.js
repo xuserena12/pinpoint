@@ -2,18 +2,17 @@ import { useEffect, useState } from 'react';
 import './Home.css';
 
 const Home = () => {
+const [backendData, setBackendData] = useState([]);
 
-  useEffect(() => {
-    const getResources = async () => {
-      const response = await fetch('/api/resources');
-      const data = await response.json();
+useEffect(() => {
+  fetch("/api")
+    .then(response => response.json())
+    .then(data => {
+      setBackendData(data.users); // Assuming data is an object with a 'users' array
       console.log(data);
-      return data;
-    };
-    
-    getResources();
-  }, [])
-  
+    });
+}, []);
+
   return (
   <div class="bg-main">
     <div class="center-container">
