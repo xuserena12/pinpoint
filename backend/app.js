@@ -7,11 +7,13 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 
 var app = express();
+const cors = require('cors');
+
 
 // Set up mongoose connection
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
-const mongoDB = "insert_your_database_url_here";
+const mongoDB = "mongodb+srv://xuserena12:DyUtGm7fS4fLMcl7@cluster0.aonka4h.mongodb.net/travel_destinations?retryWrites=true&w=majority";
 
 main().catch((err) => console.log(err));
 async function main() {
@@ -45,5 +47,10 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+// set up middleware
+app.use(cors());
+app.use(express.json());
+
 
 module.exports = app;
