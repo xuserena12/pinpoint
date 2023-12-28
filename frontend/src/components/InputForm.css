@@ -1,0 +1,46 @@
+form {
+  margin: 0 auto;
+  width: 400px;
+  padding: 1em;
+  border-radius: 1em;
+  background-color: #FFFDF8;
+  margin-top: 40px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+form li + li {
+  margin-top: 1em;
+}
+
+
+input,
+textarea {
+  font: 1em Nunito Sans;
+  width: 300px;
+  box-sizing: border-box;
+  border: 1px solid #999;
+  border-radius:5px;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #000;
+}
+
+textarea {
+  vertical-align: top;
+  height: 5em;
+}
+
+.button {
+  padding-left: 90px;
+}
+
+button {
+  margin-left: 0.5em;
+}

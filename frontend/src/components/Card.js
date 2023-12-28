@@ -6,10 +6,8 @@ const Card = ( { location, date, rating, blurb, image } ) => {
       <div className="polaroid">
         <div className="image-container"></div>
       </div>
-      <div className="button-container">
-        <button className="button">Edit</button>
-        <button className="button">Delete</button>
-      </div>
+      <button className="edit">Edit</button>
+      <button className="delete">Delete</button>
     </div>
   );
 }

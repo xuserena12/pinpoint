@@ -7,8 +7,6 @@ const destination_controller = require("../controllers/destinationController");
 
 router.get('/', destination_controller.destination_list);
 
-router.get('/hi', destination_controller.destination_list)
-
 router.get("/api", destination_controller.destination_list);
 
 

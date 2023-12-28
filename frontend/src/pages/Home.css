@@ -1,6 +1,12 @@
+.title {
+  font-family: 'Lora', serif;
+  font-weight: 600;
+}
+
 .bg-main {
   background-color: #FFFDF8;
   height: 100%;
+  padding-bottom: 40px;
 }
 
 .center-container {
@@ -10,15 +16,33 @@
   width: 100%;
 }
 
-.outer-container {
-  background-color: #e7dfd3;
+.first-container {
+  background-color: #D8EBDB;
+  width: 1200px;
+  height: 400px;
+  margin-top: 10px;
+  border-radius: 25px;  
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.split {
+  background-color: #FFFDF8;
+  width: 560px;
+  height: 360px;
+  margin-top: 20px;
+  border-radius: 15px;
+}
+
+.second-container {
+  background-color: #E7DfD3;
   width: 1200px;
   height: 600px;
   border-radius: 25px;  
-  margin-top: 60px;
+  margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 6px; /* Adjust as needed */
+  gap: 6px;
   overflow: auto; 
   padding-bottom: 18px;
 }
