@@ -2,8 +2,8 @@ const express = require('express');
 const app = express();
 const indexRouter = require('./routes/index');
 
-
-app.use('/', indexRouter);
+app.use(express.json())
+app.use('/home', indexRouter);
 
 
 // Set up mongoose connection

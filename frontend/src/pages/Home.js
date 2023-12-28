@@ -7,7 +7,7 @@ const Home = () => {
   const [destinations, setDestinations] = useState([]);
 
   useEffect(() => {
-    fetch("/api")
+    fetch("/home")
       .then(response => response.json())
       .then(data => {
         console.log(data);

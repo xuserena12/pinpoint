@@ -1,7 +1,6 @@
 import './InputForm.css';
 import { useState, useEffect } from 'react';
-import { Link, useNavigate } from "react-router-dom";
-
+import axios from 'axios';
 
 const InputForm = () => {
   const [destination, setDestination] = useState({
@@ -12,21 +11,37 @@ const InputForm = () => {
     image: ""
   });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Submitted!");
-  };
-
   const handleChange = (e) => {
     console.log("changed!");
     console.log(e.target.name);
-    console.log(e.target.value);
+    console.log(destination);
+
     setDestination({ ...destination, [e.target.name]: e.target.value });
+    console.log(destination);
   };
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   console.log("submitted!");
+  //   console.log(destination);
+  // };
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post('/home', destination);
+      console.log('Response:', response.data);
+    } catch (error) {
+      console.error('Error:', error.response.data);
+    }
+  };
+  
 
   return (
     <div>
-      <form noValidate onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <ul>
           <li>
             <input
@@ -73,8 +88,7 @@ const InputForm = () => {
         <button
         className="add-btn"
         type="submit"
-        >
-          Add
+        >Add
         </button>
       </form>
     </div>

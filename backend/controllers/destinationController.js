@@ -21,7 +21,7 @@ exports.destination_detail = asyncHandler(async (req, res, next) => {
 
 exports.destination_create_post = asyncHandler(async (req, res, next) => {
   try {
-    const { country, city, rating, date } = req.body; // Extract data from request body
+    const { country, city, rating, date } = req.body;
 
     const newDestination = new Destination({
       country: country,
