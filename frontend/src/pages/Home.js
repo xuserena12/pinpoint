@@ -6,14 +6,14 @@ import './Home.css';
 const Home = () => {
   const [destinations, setDestinations] = useState([]);
 
-useEffect(() => {
-  fetch("/api")
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-      setDestinations(data);
-  });
-}, []);
+  useEffect(() => {
+    fetch("/api")
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        setDestinations(data);
+    });
+  }, []);
 
       {/* { destinations && destinations.length > 0 ? destinations.map((destination) => (
         <div>{destination.country}</div>
