@@ -25,12 +25,13 @@ const InputForm = () => {
             <input type="text" id="city" placeholder="City" />
           </li>
           <li>
-            <input type="rating" id="rating" placeholder="Rating" />
+            <input type="number" min="0" max="5" id="rating" placeholder="Rating" />
           </li>
           <li>
             <input type="date" id="date" />
           </li>
         </ul>
+        <button className="add-btn">Add</button>
       </form>
     </div>
   );

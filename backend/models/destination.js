@@ -7,6 +7,18 @@ const DestinationSchema = new Schema({
     type: String,
     required: true,
   },
+  city : {
+    type: String,
+    required: true,
+  },
+  rating: {
+    type: Number,
+    required: true,
+  },
+  date: {
+    type: Date,
+    required: true,
+  }
 });
 
 DestinationSchema.virtual("url").get(function () {
