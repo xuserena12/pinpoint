@@ -1,22 +1,39 @@
 import { useEffect, useState } from 'react';
+import Card from '../components/Card';
 import './Home.css';
 
 const Home = () => {
-const [backendData, setBackendData] = useState([]);
+  const [destinations, setDestinations] = useState([]);
 
 useEffect(() => {
   fetch("/api")
     .then(response => response.json())
     .then(data => {
-      setBackendData(data.users); // Assuming data is an object with a 'users' array
       console.log(data);
-    });
+      setDestinations(data);
+  });
 }, []);
 
-  return (
-  <div class="bg-main">
-    <div class="center-container">
-      hi
+return (
+  <div className="bg-main">
+    <div className="center-container">
+      {/* { destinations && destinations.length > 0 ? destinations.map((destination) => (
+        <div>{destination.country}</div>
+      )) : 
+    <div>
+      nothing here sad
+    </div>  
+    } */}
+      <div className="outer-container">
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+
+      </div>
     </div>
   </div>
   );
