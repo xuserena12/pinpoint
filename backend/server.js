@@ -16,7 +16,6 @@ async function main() {
   await mongoose.connect(mongoDB);
 }
 
-// client runs on port 3000, server runs on port 3001
-app.listen(3001, () => {
-  console.log("Server started on port 3001!")
+app.listen(4000, () => {
+  console.log("Server started on port 4000!")
 });

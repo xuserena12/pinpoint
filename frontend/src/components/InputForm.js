@@ -1,8 +1,9 @@
 import './InputForm.css';
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 
-const InputForm = () => {
+
+const InputForm = ( ) => {
+
   const [destination, setDestination] = useState({
     city: "",
     country: "",
@@ -12,32 +13,43 @@ const InputForm = () => {
   });
 
   const handleChange = (e) => {
-    console.log("changed!");
-    console.log(e.target.name);
-    console.log(destination);
-
     setDestination({ ...destination, [e.target.name]: e.target.value });
-    console.log(destination);
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   console.log("submitted!");
-  //   console.log(destination);
-  // };
-  
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    
     try {
-      const response = await axios.post('/home', destination);
-      console.log('Response:', response.data);
+      const response = await fetch('/home', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(destination),
+      })
+  
+      if (!response.ok) {
+        throw new Error('Network response was not ok.');
+      }
+  
+      const data = await response.json();
+      console.log( data);
+
+      // reset to empty string
+      setDestination({
+        city: "",
+        country: "",
+        rating: "",
+        date: "",
+        image: ""
+      });
     } catch (error) {
-      console.error('Error:', error.response.data);
+      console.error(error.message);
     }
   };
-  
+
+
+    
 
   return (
     <div>

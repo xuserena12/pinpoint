@@ -14,12 +14,9 @@ exports.destination_list = asyncHandler(async (req, res, next) => {
   }
 });
 
-exports.destination_detail = asyncHandler(async (req, res, next) => {
-  res.send(`NOT IMPLEMENTED: Destination detail: ${req.params.id}`);
-});
-
 
 exports.destination_create_post = asyncHandler(async (req, res, next) => {
+  // need to add data validation/sanitization!
   try {
     const { country, city, rating, date } = req.body;
 
@@ -34,16 +31,27 @@ exports.destination_create_post = asyncHandler(async (req, res, next) => {
 
     res.status(201).json(newDestination);
   } catch (error) {
+    console.log(error);
     res.status(500).json({ message: error.message });
   }
 });
 
-exports.destination_delete_get = asyncHandler(async (req, res, next) => {
-  res.send("NOT IMPLEMENTED: Destination delete GET");
-});
 
 exports.destination_delete_post = asyncHandler(async (req, res, next) => {
-  res.send("NOT IMPLEMENTED: Destination delete POST");
+  try {
+    const destinationID = req.params.id;
+    const destination = await Destination.findById(destinationID);
+
+    if (!destination) {
+      return res.status(500).json({ message: 'Destination not found' });
+    }
+
+    await Destination.findByIdAndDelete(req.params.id);
+    res.status(200).json({ message: 'Destination deleted successfully' });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: 'Could not delete destination' });
+  }
 });
 
 exports.destination_update_get = asyncHandler(async (req, res, next) => {

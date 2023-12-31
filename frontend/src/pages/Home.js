@@ -6,22 +6,28 @@ import './Home.css';
 const Home = () => {
   const [destinations, setDestinations] = useState([]);
 
-  useEffect(() => {
-    fetch("/home")
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        setDestinations(data);
-    });
-  }, []);
+  const getDestinations = async () => {
+    try {
+      const response = await fetch('/home');
+      
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+  
+      const data = await response.json();
+      console.log(data);
+      setDestinations(data);
+    } catch (error) {
+      console.error('Error fetching destinations:', error);
+    }
+  };
+  
 
-      {/* { destinations && destinations.length > 0 ? destinations.map((destination) => (
-        <div>{destination.country}</div>
-      )) : 
-    <div>
-      nothing here sad
-    </div>  
-    } */}
+  useEffect(() => {
+    getDestinations();
+
+  }, [destinations]);
+
 
 return (
   <div className="bg-main">
@@ -37,13 +43,13 @@ return (
     </div>
     <div className="center-container">
       <div className="second-container">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+      { destinations && destinations.length > 0 ? destinations.map((destination) => (
+        <Card destination={destination}/>
+      )) : 
+        <div>
+          nothing here sad
+        </div>  
+      }
       </div>
     </div>
   </div>
