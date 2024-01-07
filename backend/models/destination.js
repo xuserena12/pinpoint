@@ -18,17 +18,10 @@ const DestinationSchema = new Schema({
     type: Date,
     required: true,
   },
-<<<<<<< HEAD
   user_id: {
     type: String,
     required: true,
   }
-=======
-  // user_id: {
-  //   type: String,
-  //   required: true,
-  // }
->>>>>>> 3fc42ce1a403dd2f916db1cc9020ae8403c52d77
 });
 
 DestinationSchema.virtual("url").get(function () {

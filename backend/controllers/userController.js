@@ -16,13 +16,7 @@ exports.login_user = asyncHandler(async (req, res, next) => {
     const token = createToken(user._id);
     const id = user._id;
 
-<<<<<<< HEAD
     res.status(200).json({ email, token, id });
-=======
-    const user_id = user._id;
-
-    res.status(200).json({ email, token, user_id });
->>>>>>> 3fc42ce1a403dd2f916db1cc9020ae8403c52d77
   } catch (error) {
     res.status(400).json({error: error.message});
   }
