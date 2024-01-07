@@ -8,6 +8,9 @@ const Home = () => {
   const [destinations, setDestinations] = useState([]);
   const { user } = useAuthContext();
 
+  const userId = localStorage.getItem('id');
+  console.log(userId);
+
   useEffect(() => {
     const getDestinations = async () => {
       try {

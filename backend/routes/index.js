@@ -8,6 +8,6 @@ router.get('/home', requireAuth, destination_controller.destination_list);
 
 router.post('/home', requireAuth, destination_controller.destination_create_post);
 
-router.delete('/home/:id', destination_controller.destination_delete_post);
+router.delete('/home/:id', requireAuth, destination_controller.destination_delete_post);
 
 module.exports = router;
