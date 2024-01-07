@@ -17,6 +17,10 @@ const DestinationSchema = new Schema({
   date: {
     type: Date,
     required: true,
+  },
+  user_id: {
+    type: String,
+    required: true,
   }
 });
 

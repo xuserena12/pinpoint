@@ -11,10 +11,10 @@ const Home = () => {
   useEffect(() => {
     const getDestinations = async () => {
       try {
-        const response = await fetch('/home', {
+        const response = await fetch(`/home?userId=${user.id}`, {
           headers: {
             'Authorization': `Bearer ${user.token}`
-          }
+          },
         });
         
         if (!response.ok) {

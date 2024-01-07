@@ -11,7 +11,7 @@ const InputForm = ( ) => {
     country: "",
     rating: "",
     date: "",
-    image: ""
+    id: user.id,
   });
 
   const handleChange = (e) => {

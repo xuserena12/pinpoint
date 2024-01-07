@@ -6,8 +6,10 @@ exports.index = asyncHandler(async (req, res, next) => {
 });
 
 exports.destination_list = asyncHandler(async (req, res, next) => {
+  const userId = req.query.userId;
+  console.log(userId);
   try {
-    const allDestinations = await Destination.find({}, "country city rating date").sort({ country: 1 }).exec();
+    const allDestinations = await Destination.find({ user_id: userId }, "country city rating date").sort({ country: 1 }).exec();
     res.json(allDestinations);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -18,13 +20,16 @@ exports.destination_list = asyncHandler(async (req, res, next) => {
 exports.destination_create_post = asyncHandler(async (req, res, next) => {
   // need to add data validation/sanitization!
   try {
-    const { country, city, rating, date } = req.body;
+    const { country, city, rating, date, id } = req.body;
+
+    console.log(id);
 
     const newDestination = new Destination({
       country: country,
       city: city,
       rating: rating,
-      date: date
+      date: date,
+      user_id: id,
     });
 
     await newDestination.save();
