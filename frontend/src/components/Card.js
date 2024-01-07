@@ -1,12 +1,24 @@
 import './Card.css';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const Card = ( { destination } ) => {
+  const { user } = useAuthContext();
+
   const handleDelete = async () => {
+
+    if (!user) {
+      return;
+    }
+
     console.log(destination._id);
     console.log("this item has been deleted :)");
     try {
       const response = await fetch(`/home/${destination._id}`, {
         method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${user.token}`
+        },
       });
       
       const json = await response.json()

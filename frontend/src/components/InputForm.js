@@ -1,8 +1,10 @@
 import './InputForm.css';
 import { useState, useEffect } from 'react';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 
 const InputForm = ( ) => {
+  const { user } = useAuthContext();
 
   const [destination, setDestination] = useState({
     city: "",
@@ -18,12 +20,18 @@ const InputForm = ( ) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!user) {
+      console.log('You must be logged in');
+      return;
+    }
     
     try {
       const response = await fetch('/home', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${user.token}`
         },
         body: JSON.stringify(destination),
       })

@@ -54,9 +54,6 @@ exports.destination_delete_post = asyncHandler(async (req, res, next) => {
   }
 });
 
-exports.destination_update_get = asyncHandler(async (req, res, next) => {
-  res.send("NOT IMPLEMENTED: Destination update GET");
-});
 
 exports.destination_update_post = asyncHandler(async (req, res, next) => {
   res.send("NOT IMPLEMENTED: Destination update POST");
