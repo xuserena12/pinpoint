@@ -8,13 +8,17 @@ const Home = () => {
   const [destinations, setDestinations] = useState([]);
   const { user } = useAuthContext();
 
+  const userId = localStorage.getItem('id');
+  console.log(userId);
+
   useEffect(() => {
     const getDestinations = async () => {
       try {
-        const response = await fetch('/home', {
+        const response = await fetch(`/home?userId=${userId}`, {
+          method: 'GET',
           headers: {
-            'Authorization': `Bearer ${user.token}`
-          }
+            'Authorization': `Bearer ${user.token}`,
+          },
         });
         
         if (!response.ok) {

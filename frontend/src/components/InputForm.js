@@ -6,13 +6,15 @@ import { useAuthContext } from '../hooks/useAuthContext';
 const InputForm = ( ) => {
   const { user } = useAuthContext();
 
+  const userId = localStorage.getItem('id');
+
   const [destination, setDestination] = useState({
     city: "",
     country: "",
     rating: "",
     date: "",
-    image: ""
   });
+
 
   const handleChange = (e) => {
     setDestination({ ...destination, [e.target.name]: e.target.value });
@@ -49,7 +51,7 @@ const InputForm = ( ) => {
         country: "",
         rating: "",
         date: "",
-        image: ""
+        user_id: ","
       });
     } catch (error) {
       console.error(error.message);

@@ -6,6 +6,9 @@ exports.index = asyncHandler(async (req, res, next) => {
 });
 
 exports.destination_list = asyncHandler(async (req, res, next) => {
+  const { userId } = req.query;
+  console.log(userId);
+
   try {
     const allDestinations = await Destination.find({}, "country city rating date").sort({ country: 1 }).exec();
     res.json(allDestinations);
@@ -16,15 +19,19 @@ exports.destination_list = asyncHandler(async (req, res, next) => {
 
 
 exports.destination_create_post = asyncHandler(async (req, res, next) => {
+  // const user_id = req.user._id;
+  // console.log(user_id);
   // need to add data validation/sanitization!
   try {
     const { country, city, rating, date } = req.body;
+    // console.log(user_id);
 
     const newDestination = new Destination({
       country: country,
       city: city,
       rating: rating,
-      date: date
+      date: date,
+      // user_id: user_id,
     });
 
     await newDestination.save();
