@@ -18,9 +18,6 @@ exports.destination_list = asyncHandler(async (req, res, next) => {
 
 
 exports.destination_create_post = asyncHandler(async (req, res, next) => {
-  // const user_id = req.user._id;
-  // console.log(user_id);
-  // need to add data validation/sanitization!
   try {
     const { country, city, rating, date, id } = req.body;
 
@@ -63,5 +60,6 @@ exports.destination_delete_post = asyncHandler(async (req, res, next) => {
 
 
 exports.destination_update_post = asyncHandler(async (req, res, next) => {
-  res.send("NOT IMPLEMENTED: Destination update POST");
+
 });
+

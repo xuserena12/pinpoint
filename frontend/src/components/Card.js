@@ -39,7 +39,12 @@ const Card = ( { destination } ) => {
           <div className="image"></div>
         </div>
         <p className="city">
-          {destination.city}
+          <i>
+            {destination.city}, {destination.country}
+          </i>
+        </p>
+        <p>
+          Rating: {destination.rating}
         </p>
       </div>
       <button className="edit">Edit</button>

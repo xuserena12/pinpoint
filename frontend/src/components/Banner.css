@@ -10,3 +10,17 @@
   font-weight: 700;
   font-size: 24px;
 }
+
+.logout-btn {
+  background-color: #9a9ae0;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  padding: 6px 10px;
+  margin-top: 12px;
+}
+
+.logout-btn:hover {
+  background-color: #6464ad;
+}

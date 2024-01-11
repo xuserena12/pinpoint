@@ -18,7 +18,7 @@ const Banner = () => {
         { user && (
             <div>
               <span>{user.email}</span>
-              <button onClick={handleClick}>Logout</button>
+              <button className="logout-btn" onClick={handleClick}>Logout</button>
             </div>
           )}
       </div>
